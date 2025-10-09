@@ -1,2 +1,2 @@
-# curtisyang.github.io
+# curti618.github.io
 personal web
