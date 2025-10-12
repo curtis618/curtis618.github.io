@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Curtis Yang 楊期閎｜個人網站</title>
+  <title>Curtis Yang 楊期閎｜個人網站</title> 
   <meta name="description" content="Curtis Yang（楊期閎）— 資訊管理｜AI × 教育科技｜系統開發與專案管理。作品集、經歷、聯絡方式。" />
   <meta name="author" content="Curtis Yang" />
   <meta property="og:title" content="Curtis Yang｜個人網站" />
   <meta property="og:description" content="AI × 教育科技 × 系統開發｜作品集與經歷" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="curtis618.github.io/me.png" />
+  <meta property="og:image" content="https://picsum.photos/1200/630" />
   <meta name="theme-color" content="#0b1b3a" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230b1b3a'/%3E%3Ctext x='50' y='60' font-size='44' text-anchor='middle' fill='%23ffffff' font-family='Arial, sans-serif'%3ECY%3C/text%3E%3C/svg%3E" />
   <style>
-  .avatar img {width: 100%;height: 100%;object-fit:cover;border-radius: 18px;}
+    .avatar img {width: 100%;height: 100%;object-fit:cover;border-radius: 18px;}
     :root{--bg:#0b1220;--bg2:#0b1b3a;--text:#e5e7eb;--muted:#9aa4b2;--card:#0f172a;--line:rgba(148,163,184,.18);--brand:#2563eb;--accent:#22d3ee}
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
@@ -54,6 +54,28 @@
     @media (max-width: 900px){ .hero{grid-template-columns:1fr} .grid{grid-template-columns:1fr 1fr} }
     @media (max-width: 640px){ .grid{grid-template-columns:1fr} h1{font-size:36px} }
     iframe{width:100%; aspect-ratio:16/9; border:1px solid var(--line); border-radius:12px}
+    /* === Tilt for any card (.card) === */
+    .tilt-any{
+      transform-style: preserve-3d;
+      transition: transform .2s ease, box-shadow .2s ease;
+      will-change: transform;
+    }
+    /* 讓標題/Icon 有立體浮起感（可選） */
+    .tilt-lift { transform: translateZ(18px); }
+    @media (prefers-reduced-motion: reduce){
+      .tilt-any{ transition: none !important; }
+    }
+  </style>
+<style>
+    /* === TiltedCard === */
+    .tilt-wrap{display:inline-block; perspective:1000px}
+    .tilt-card{position:relative; width:var(--w,300px); height:var(--h,300px); border-radius:18px; overflow:hidden; border:1px solid var(--line); transform-style:preserve-3d; transition:transform .2s ease, box-shadow .2s ease}
+    .tilt-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+    .tilt-overlay{position:absolute; inset:0; display:grid; place-items:end start; padding:14px; background:linear-gradient(180deg,rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); color:#fff; pointer-events:none}
+    .tilt-caption{font-weight:700;}
+    .tilt-tooltip{position:absolute; top:10px; right:10px; background:rgba(0,0,0,.55); color:#fff; font-size:12px; padding:6px 8px; border-radius:10px; opacity:0; transform:translateZ(30px); transition:opacity .2s ease}
+    .tilt-card[data-tooltip="true"]:hover .tilt-tooltip{opacity:1}
+    @media (max-width:640px){ .tilt-wrap{perspective:none} .tilt-card{transform:none !important} }
   </style>
 </head>
 <body>
@@ -76,10 +98,8 @@
     <section class="hero" id="about">
       <div>
         <span class="tag">AI × 教育科技 × 系統開發</span>
-        <h1>Hi，我是 <span style="color:var(--accent)">Curtis Yang</span></h1>
-        <h2><span style="color:var(--accent)">楊期閎</span></h2>
-        <p class="lead">NCNU IM -> NCU LST</p>
-        <p class="lead">擅長專案管理、系統分析設計、LINE Bot 與生成式 AI 應用。熱衷以使用者為中心，打造有效的學習與產品體驗。</p>
+        <h1>Hi，我是 <span style="color:var(--accent)">Curtis Yang（楊期閎）</span></h1>
+        <p class="lead">暨大資管系｜擅長專案管理、系統分析設計、LINE Bot 與生成式 AI 應用。熱衷以使用者為中心，打造有效的學習與產品體驗。</p>
         <div class="kpis">
           <div class="kpi"><div class="num">6+</div><div>專案 / 作品集</div></div>
           <div class="kpi"><div class="num">5+</div><div>競賽 / 黑客松</div></div>
@@ -91,7 +111,8 @@
         </div>
       </div>
       <div class="avatar" aria-hidden="true"><img src="me.png" alt="Avatar" /></div>    
-      </section>
+    </section>
+
     <section id="skills">
       <h2>技能</h2>
       <div class="grid">
@@ -122,8 +143,8 @@
     <section id="projects">
       <h2>精選作品</h2>
       <div class="grid">
-        <article class="card">
-          <h3>AInvest｜人機協作投資回測系統</h3>
+        <article class="card tilt-any" data-tilt data-rotate="10" data-scale="1.04">
+          <h3 class="tilt-lift">AInvest｜人機協作投資回測系統</h3>
           <p>以 LLM 協助非程式使用者撰寫投資策略並進行回測，含可控性優化與量化評估。</p>
           <div class="chips">
             <span class="chip">Python</span><span class="chip">OpenAI API</span><span class="chip">Backtesting</span>
@@ -132,8 +153,8 @@
             <a class="btn" href="https://youtu.be/GnyvEv0DfzM" target="_blank" rel="noopener">Demo 影片</a>
           </div>
         </article>
-        <article class="card">
-          <h3>LINE Bot｜青少年就學就業職訓機器人</h3>
+        <article class="card tilt-any" data-tilt data-rotate="10" data-scale="1.04">
+          <h3 class="tilt-lift">LINE Bot｜青少年就學就業職訓機器人</h3>
           <p>輔導與情緒辨識整合；以 BERT 偵測情緒走勢、降低社工負擔、提升服務觸及。</p>
           <div class="chips">
             <span class="chip">LINE Messaging API</span><span class="chip">BERT</span><span class="chip">Apps Script</span>
@@ -142,29 +163,22 @@
             <a class="btn" href="https://www.youtube.com/watch?v=16b24IDvu98&t=4s" target="_blank" rel="noopener">Demo 影片</a>
           </div>
         </article>
-        <article class="card">
-          <h3>iLearn｜學習數位簽章聊天機器人</h3>
+        <article class="card tilt-any" data-tilt data-rotate="10" data-scale="1.04">
+          <h3 class="tilt-lift">iLearn｜學習數位簽章聊天機器人</h3>
           <p>以互動方式學會非對稱加密與 CA 流程，降低入門門檻，提升資安意識。</p>
           <div class="chips">
             <span class="chip">Security</span><span class="chip">Chatbot</span><span class="chip">Education</span>
           </div>
         </article>
-        <article class="card">
-          <h3>新聞標題與配圖生成系統</h3>
+        <article class="card tilt-any" data-tilt data-rotate="10" data-scale="1.04">
+          <h3 class="tilt-lift">新聞標題與配圖生成系統</h3>
           <p>結合 LLM 與圖像模型，支援標題/標籤生成、圖片生成、相似度比對與搜尋。</p>
           <div class="chips">
             <span class="chip">NLP</span><span class="chip">Vision</span><span class="chip">Editorial</span>
           </div>
         </article>
-        <article class="card">
-          <h3>南投旅遊永續機器人</h3>
-          <p>以 LINE Bot 整合在地旅遊資訊，輔助永續導覽與互動。</p>
-          <div class="chips">
-            <span class="chip">LINE Bot</span><span class="chip">Civic Tech</span>
-          </div>
-        </article>
-        <article class="card">
-          <h3>南投縣獎勵補助登記系統</h3>
+        <article class="card tilt-any" data-tilt data-rotate="10" data-scale="1.04">
+          <h3 class="tilt-lift">南投旅遊永續機器人</h3>
           <p>店家透過 LINE 登記票券；Google Sheet 自動化彙整，簡化核銷流程與成本。</p>
           <div class="chips">
             <span class="chip">Apps Script</span><span class="chip">Google Sheet</span><span class="chip">Automation</span>
@@ -216,7 +230,57 @@
         <li>網站：<a href="https://curtisyang.me" target="_blank" rel="noopener">curtisyang.me</a></li>
       </ul>
     </section>
+      <!-- TiltedCard Demo Section -->
+    <section id="tilted-demo">
+      <h2>互動卡片示範（Tilted Card）</h2>
+      <p class="lead">純原生 HTML + JS 還原 TiltedCard 效果；支援傾斜、縮放、疊層文字與提示。</p>
+      <div class="links" style="margin-bottom:12px">
+        <a class="btn" href="#projects">回到作品列表</a>
+      </div>
+      <div class="tilt-wrap" data-rotate="12" data-scale="1.2" style="--w:300px;--h:300px">
+        <figure class="tilt-card" aria-label="Kendrick Lamar - GNX Album Cover" data-tooltip="true">
+          <img src="https://i.scdn.co/image/ab67616d0000b273d9985092cd88bffd97653b58" alt="Kendrick Lamar - GNX Album Cover" />
+          <figcaption class="tilt-overlay">
+            <p class="tilt-caption">Kendrick Lamar - GNX</p>
+          </figcaption>
+          <div class="tilt-tooltip">Kendrick Lamar - GNX</div>
+        </figure>
+      </div>
+    </section>
   </main>
+  <script>
+    // === Generic tilt for any [data-tilt] element ===
+    (function(){
+      const nodes = document.querySelectorAll('[data-tilt]');
+      const isTouch = matchMedia('(pointer: coarse)').matches;
+      if(isTouch) return; // 行動裝置停用互動
+
+      nodes.forEach(el=>{
+        const rotateAmp = parseFloat(el.dataset.rotate || '8');
+        const scaleHover = parseFloat(el.dataset.scale || '1.03');
+        let rect;
+
+        function onEnter(){ rect = el.getBoundingClientRect(); }
+        function onMove(e){
+          const x = (e.clientX - rect.left) / rect.width;   // 0..1
+          const y = (e.clientY - rect.top) / rect.height;   // 0..1
+          const rx = (0.5 - y) * (rotateAmp*2);
+          const ry = (x - 0.5) * (rotateAmp*2);
+          el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(${scaleHover})`;
+          el.style.boxShadow = `${-ry*2}px ${rx*2}px 30px rgba(0,0,0,.35)`;
+        }
+        function onLeave(){
+          el.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+          el.style.boxShadow = 'none';
+        }
+
+        el.addEventListener('mouseenter', onEnter);
+        el.addEventListener('mousemove', onMove);
+        el.addEventListener('mouseleave', onLeave);
+      });
+    })();
+  </script>
+  <footer>
 
   <footer>
     <div class="wrap">
